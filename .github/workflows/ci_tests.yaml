@@ -102,7 +102,9 @@ jobs:
       # Run the tests
       - name: Test with pytest
         shell: bash -l {0}
-        run: make test PYTEST_EXTRA="-r P"
+        run: |
+          python pygmt/tests/test_image_debug.py
+          make test PYTEST_EXTRA="-r P"
 
       # Build the documentation
       - name: Build the documentation
