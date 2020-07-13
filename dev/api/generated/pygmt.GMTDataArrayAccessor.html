@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
     
-        <title>pygmt.exceptions.GMTCLibError &mdash; PyGMT</title>
+        <title>pygmt.GMTDataArrayAccessor &mdash; PyGMT</title>
     
 
 
@@ -47,8 +47,8 @@
   <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="pygmt.exceptions.GMTCLibNoSessionError" href="pygmt.exceptions.GMTCLibNoSessionError.html" />
-    <link rel="prev" title="pygmt.exceptions.GMTOSError" href="pygmt.exceptions.GMTOSError.html" />
+    <link rel="next" title="pygmt.info" href="pygmt.info.html" />
+    <link rel="prev" title="pygmt.config" href="pygmt.config.html" />
     <!-- Google Analytics tracking code -->
     <!-- See https://developers.google.com/analytics/devguides/collection/analyticsjs/ for documentation. -->
     <!-- 'storage': 'none' disables cookies -->
@@ -125,19 +125,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#plotting">Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#data-processing">Data Processing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#gmt-defaults">GMT Defaults</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#metadata">Metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#miscellaneous">Miscellaneous</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#datasets">Datasets</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#exceptions">Exceptions</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="pygmt.exceptions.GMTError.html">pygmt.exceptions.GMTError</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygmt.exceptions.GMTInvalidInput.html">pygmt.exceptions.GMTInvalidInput</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygmt.exceptions.GMTVersionError.html">pygmt.exceptions.GMTVersionError</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygmt.exceptions.GMTOSError.html">pygmt.exceptions.GMTOSError</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">pygmt.exceptions.GMTCLibError</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygmt.exceptions.GMTCLibNoSessionError.html">pygmt.exceptions.GMTCLibNoSessionError</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pygmt.exceptions.GMTCLibNotFoundError.html">pygmt.exceptions.GMTCLibNotFoundError</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#metadata">Metadata</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">pygmt.GMTDataArrayAccessor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygmt.info.html">pygmt.info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pygmt.grdinfo.html">pygmt.grdinfo</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#miscellaneous">Miscellaneous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#datasets">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#exceptions">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#gmt-c-api">GMT C API</a></li>
 </ul>
 </li>
@@ -210,7 +206,7 @@
         
           <li><a href="../index.html">API Reference</a> &raquo;</li>
         
-      <li>pygmt.exceptions.GMTCLibError</li>
+      <li>pygmt.GMTDataArrayAccessor</li>
     
     
     <li class="source-link">
@@ -218,7 +214,7 @@
             
                 
                 
-                <a href="https://github.com/GenericMappingTools/pygmt/issues/new?title=Suggested%20improvement%20for%20api/generated/pygmt.exceptions.GMTCLibError&body=Please%20describe%20what%20could%20be%20improved%20about%20this%20page%20or%20the%20typo/mistake%20that%20you%20found%3A"
+                <a href="https://github.com/GenericMappingTools/pygmt/issues/new?title=Suggested%20improvement%20for%20api/generated/pygmt.GMTDataArrayAccessor&body=Please%20describe%20what%20could%20be%20improved%20about%20this%20page%20or%20the%20typo/mistake%20that%20you%20found%3A"
                    class="fa fa-github"> Improve this page</a>
             
         
@@ -257,14 +253,37 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="pygmt-exceptions-gmtcliberror">
-<h1>pygmt.exceptions.GMTCLibError<a class="headerlink" href="#pygmt-exceptions-gmtcliberror" title="Permalink to this headline">¶</a></h1>
-<dl class="exception">
-<dt id="pygmt.exceptions.GMTCLibError">
-<em class="property">exception </em><code class="sig-prename descclassname">pygmt.exceptions.</code><code class="sig-name descname">GMTCLibError</code><a class="reference internal" href="../../_modules/pygmt/exceptions.html#GMTCLibError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygmt.exceptions.GMTCLibError" title="Permalink to this definition">¶</a></dt>
-<dd><p>Error encountered when running a function from the GMT shared library.</p>
+<div class="section" id="pygmt-gmtdataarrayaccessor">
+<h1>pygmt.GMTDataArrayAccessor<a class="headerlink" href="#pygmt-gmtdataarrayaccessor" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pygmt.GMTDataArrayAccessor">
+<em class="property">class </em><code class="sig-prename descclassname">pygmt.</code><code class="sig-name descname">GMTDataArrayAccessor</code><span class="sig-paren">(</span><em class="sig-param">xarray_obj</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/pygmt/modules.html#GMTDataArrayAccessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pygmt.GMTDataArrayAccessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the GMT extension for <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.DataArray.html#xarray.DataArray" title="(in xarray v0.15.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">xarray.DataArray</span></code></a>.</p>
+<p>You can access various GMT specific metadata about your grid as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pygmt.datasets</span> <span class="kn">import</span> <span class="n">load_earth_relief</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use the global Earth relief grid with 1 degree spacing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="n">load_earth_relief</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;01d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># See if grid uses Gridline (0) or Pixel (1) registration</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span><span class="o">.</span><span class="n">gmt</span><span class="o">.</span><span class="n">registration</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># See if grid uses Cartesian (0) or Geographic (1) coordinate system</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span><span class="o">.</span><span class="n">gmt</span><span class="o">.</span><span class="n">gtype</span>
+<span class="go">1</span>
+</pre></div>
+</div>
 </dd></dl>
 
+<p class="rubric">Methods Summary</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
 <div style='clear:both'></div></div>
 
 
@@ -276,10 +295,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pygmt.exceptions.GMTCLibNoSessionError.html" class="btn btn-neutral float-right" title="pygmt.exceptions.GMTCLibNoSessionError" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pygmt.info.html" class="btn btn-neutral float-right" title="pygmt.info" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="pygmt.exceptions.GMTOSError.html" class="btn btn-neutral float-left" title="pygmt.exceptions.GMTOSError" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pygmt.config.html" class="btn btn-neutral float-left" title="pygmt.config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

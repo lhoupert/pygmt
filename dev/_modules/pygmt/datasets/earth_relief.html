@@ -218,7 +218,7 @@
 <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">GMTInvalidInput</span>
 
 
-<div class="viewcode-block" id="load_earth_relief"><a class="viewcode-back" href="../../../api/generated/pygmt.datasets.load_earth_relief.html#pygmt.datasets.load_earth_relief">[docs]</a><span class="k">def</span> <span class="nf">load_earth_relief</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;01d&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="load_earth_relief"><a class="viewcode-back" href="../../../api/generated/pygmt.datasets.load_earth_relief.html#pygmt.datasets.load_earth_relief">[docs]</a><span class="k">def</span> <span class="nf">load_earth_relief</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s2">&quot;01d&quot;</span><span class="p">,</span> <span class="n">registration</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Load Earth relief grids (topography and bathymetry) in various resolutions.</span>
 
@@ -238,6 +238,12 @@
 <span class="sd">        ``&#39;20m&#39;``, ``&#39;15m&#39;``, ``&#39;10m&#39;``, ``&#39;06m&#39;``, ``&#39;05m&#39;``, ``&#39;04m&#39;``,</span>
 <span class="sd">        ``&#39;03m&#39;``, ``&#39;02m&#39;``, ``&#39;01m&#39;``, ``&#39;30s&#39;`` or ``&#39;15s&#39;``.</span>
 
+<span class="sd">    registration : str</span>
+<span class="sd">        Grid registration type. Either ``pixel`` for pixel registration or</span>
+<span class="sd">        ``gridline`` for gridline registration. Default is ``None``, where</span>
+<span class="sd">        a pixel-registered grid is returned unless only the</span>
+<span class="sd">        gridline-registered grid is available.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    grid : xarray.DataArray</span>
@@ -246,7 +252,19 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">_is_valid_resolution</span><span class="p">(</span><span class="n">resolution</span><span class="p">)</span>
-    <span class="n">fname</span> <span class="o">=</span> <span class="n">which</span><span class="p">(</span><span class="s2">&quot;@earth_relief_</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resolution</span><span class="p">),</span> <span class="n">download</span><span class="o">=</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">registration</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;pixel&quot;</span><span class="p">,</span> <span class="s2">&quot;gridline&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># If None, let GMT decide on Pixel/Gridline type</span>
+        <span class="n">reg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="n">registration</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">registration</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">GMTInvalidInput</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Invalid grid registration: </span><span class="si">{</span><span class="n">registration</span><span class="si">}</span><span class="s2">, should be either &quot;</span>
+            <span class="s2">&quot;&#39;pixel&#39;, &#39;gridline&#39; or None. Default is None, where a &quot;</span>
+            <span class="s2">&quot;pixel-registered grid is returned unless only the &quot;</span>
+            <span class="s2">&quot;gridline-registered grid is available.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">which</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;@earth_relief_</span><span class="si">{</span><span class="n">resolution</span><span class="si">}{</span><span class="n">reg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
     <span class="n">grid</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataarray</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
     <span class="c1"># Add some metadata to the grid</span>
     <span class="n">grid</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;elevation&quot;</span>
@@ -360,7 +378,7 @@
         &copy; Copyright 2017-2020, The PyGMT Developers.
       
         <span class="commit">
-          Revision <code><a href="https://github.com/GenericMappingTools/pygmt/commit/bedb48d5cf105c37573f8e8c5d74b97f1f741187">bedb48d</a></code>.
+          Revision <code><a href="https://github.com/GenericMappingTools/pygmt/commit/0f1297269b78845537dc918d37320710236f2c98">0f12972</a></code>.
         </span>
       
 
